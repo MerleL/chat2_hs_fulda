@@ -224,3 +224,27 @@ BoxDecoration styleContainer() {
     ),
   );
 }
+
+
+/*
+CheckboxListTile(
+              title: Text("Mit ListTile"),
+              controlAffinity: ListTileControlAffinity.leading,
+              value: _checkboxTileValue,
+              onChanged: (bool value) {
+                setState(() {
+                  _checkboxTileValue = value;
+                });
+                if (_checkboxTileValue == true) {
+                  _checkboxValue = false;
+                  tempText = "CheckboxListTile!";
+                }
+                if (_checkboxTileValue == false) {
+                  tempText = "Keine Checkbox";
+                }
+              },
+              activeColor: Colors.red,
+              checkColor: Colors.purple,
+              tileColor: Colors.black12,
+            )
+ */
