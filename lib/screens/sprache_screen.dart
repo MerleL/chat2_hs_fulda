@@ -24,7 +24,7 @@ class SpracheScreen extends StatelessWidget {
                 ),
                 buildListTile(
                   context,
-                  'Englisch',
+                  'English',
                   Icon(
                     Icons.check_box_outline_blank,
                     color: Color.fromARGB(255, 78, 90, 92),

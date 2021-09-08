@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 
-class BenachrichtigungenScreen extends StatelessWidget {
+bool valueTemp = false;
+
+class BenachrichtigungenScreen extends StatefulWidget {
   const BenachrichtigungenScreen({Key? key}) : super(key: key);
 
+  @override
+  _BenachrichtigungenScreenState createState() => _BenachrichtigungenScreenState();
+}
+
+class _BenachrichtigungenScreenState extends State<BenachrichtigungenScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,29 +41,20 @@ class BenachrichtigungenScreen extends StatelessWidget {
                             padding: const EdgeInsets.only(top: 10.0),
                             child: Text('Pop-Up-Benachrichtigungen'),
                           ),
-                          buildListTile(
+                          buildCheck(
                             context,
-                            'Einzel-Chats',
-                            Icon(
-                              Icons.check_box,
-                              color: Color.fromARGB(255, 78, 90, 92),
-                            ),
+                            'Einzelchats',
+                            false
                           ),
-                          buildListTile(
-                            context,
-                            'Gruppen-Chats',
-                            Icon(
-                              Icons.check_box,
-                              color: Color.fromARGB(255, 78, 90, 92),
-                            ),
+                          buildCheck(
+                              context,
+                              'Gruppen-Chats',
+                              false
                           ),
-                          buildListTile(
-                            context,
-                            'Fachbereiche',
-                            Icon(
-                              Icons.check_box,
-                              color: Color.fromARGB(255, 78, 90, 92),
-                            ),
+                          buildCheck(
+                              context,
+                              'Fachbereiche',
+                              false
                           ),
                         ],
                       ),
@@ -81,21 +79,15 @@ class BenachrichtigungenScreen extends StatelessWidget {
                             padding: const EdgeInsets.only(top: 10.0),
                             child: Text('Töne'),
                           ),
-                          buildListTile(
-                            context,
-                            'Pop-Up',
-                            Icon(
-                              Icons.check_box,
-                              color: Color.fromARGB(255, 78, 90, 92),
-                            ),
+                          buildCheck(
+                              context,
+                              'Pop-Up',
+                              false
                           ),
-                          buildListTile(
-                            context,
-                            'In-App',
-                            Icon(
-                              Icons.check_box,
-                              color: Color.fromARGB(255, 78, 90, 92),
-                            ),
+                          buildCheck(
+                              context,
+                              'In-App',
+                              false
                           ),
                         ],
                       ),
@@ -120,21 +112,15 @@ class BenachrichtigungenScreen extends StatelessWidget {
                             padding: const EdgeInsets.only(top: 10.0),
                             child: Text('Vibration'),
                           ),
-                          buildListTile(
-                            context,
-                            'Pop-Up',
-                            Icon(
-                              Icons.check_box,
-                              color: Color.fromARGB(255, 78, 90, 92),
-                            ),
+                          buildCheck(
+                              context,
+                              'Pop-Up',
+                              false
                           ),
-                          buildListTile(
-                            context,
-                            'In-App',
-                            Icon(
-                              Icons.check_box,
-                              color: Color.fromARGB(255, 78, 90, 92),
-                            ),
+                          buildCheck(
+                              context,
+                              'In-App',
+                              false
                           ),
                         ],
                       ),
@@ -159,13 +145,10 @@ class BenachrichtigungenScreen extends StatelessWidget {
                             padding: const EdgeInsets.only(top: 10.0),
                             child: Text('LED-Farbe'),
                           ),
-                          buildListTile(
-                            context,
-                            'Rot',
-                            Icon(
-                              Icons.check_box,
-                              color: Color.fromARGB(255, 78, 90, 92),
-                            ),
+                          buildCheck(
+                              context,
+                              'Rot',
+                              false,
                           ),
                         ],
                       ),
@@ -177,6 +160,27 @@ class BenachrichtigungenScreen extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  Widget buildCheck(BuildContext context, String text, bool valueLT) {
+    return Container(
+        child: Card(
+          child: CheckboxListTile(
+            title: Text(
+              text,
+              style: Theme.of(context).textTheme.bodyText1,
+            ),
+            controlAffinity: ListTileControlAffinity.leading,
+            value: valueTemp,
+            onChanged: (bool? value) {
+              setState(() {
+                valueTemp = value!;
+              });
+            },
+            activeColor: Color.fromARGB(255, 78, 90, 92),
+          ),
+        )
     );
   }
 }
