@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+//import 'package:flutter/services.dart';
 
 // ToDo: Loesung fuer lange Namen/Staden
 // ToDo Datenbank: Name, FD, Bild; Bild/Status änderbar
@@ -86,13 +87,62 @@ class ProfilScreen extends StatelessWidget {
                   color: Color.fromARGB(255, 78, 90, 92),
                 ),
               ),
-              buildList(
-                context,
-                'Status:',
-                'suche Lerngruppe',
-                Icon(
-                  Icons.info,
-                  color: Color.fromARGB(255, 78, 90, 92),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 15.0, vertical: 5.0),
+                child: Container(
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: Color.fromARGB(200, 240, 240, 240),
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(4.0),
+                    ),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(top: 15.0),
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.info,
+                                color: Color.fromARGB(255, 78, 90, 92),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 10.0),
+                                child: Text(
+                                  'Status:',
+                                  style: Theme.of(context).textTheme.bodyText2,
+                                ),
+                              ),
+                              Container(
+                                width: MediaQuery.of(context).size.width * 0.65,
+                                // 65% der Bildschirmbreite
+                                //color: Colors.green,
+                                child: Align(
+                                  alignment: Alignment.centerRight,
+                                  child: Icon(
+                                    Icons.edit,
+                                    color: Color.fromARGB(255, 78, 90, 92),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 15.0),
+                          child: Text(
+                            'suche Lerngruppe',
+                            style: Theme.of(context).textTheme.bodyText1,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
               ),
               buildList(

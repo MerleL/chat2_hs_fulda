@@ -68,7 +68,7 @@ class SettingsScreen extends StatelessWidget {
               context,
               'Benachrichtigungen',
               Icon(
-                Icons.ac_unit,
+                Icons.notifications,
                 color: Color.fromARGB(255, 78, 90, 92),
               ),
               BenachrichtigungenScreen(),
