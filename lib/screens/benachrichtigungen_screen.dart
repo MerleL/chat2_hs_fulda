@@ -1,6 +1,16 @@
 import 'package:flutter/material.dart';
 
 bool valueTemp = false;
+final Map<String, bool> valueMap = {
+  "Einzelchats" : false,
+  "Gruppen-Chats" : false,
+  "Fachbereiche" : false,
+  "Pop-Up" : false,
+  "In-App" : false,
+  "Pop-Up " : false,
+  "In-App " : false,
+  "Rot" : false,
+};
 
 class BenachrichtigungenScreen extends StatefulWidget {
   const BenachrichtigungenScreen({Key? key}) : super(key: key);
@@ -42,9 +52,9 @@ class _BenachrichtigungenScreenState extends State<BenachrichtigungenScreen> {
                             child: Text('Pop-Up-Benachrichtigungen'),
                           ),
                           buildCheck(
-                            context,
-                            'Einzelchats',
-                            false
+                              context,
+                              "Einzelchats",
+                              false,
                           ),
                           buildCheck(
                               context,
@@ -162,7 +172,6 @@ class _BenachrichtigungenScreenState extends State<BenachrichtigungenScreen> {
       ),
     );
   }
-
   Widget buildCheck(BuildContext context, String text, bool valueLT) {
     return Container(
         child: Card(
@@ -203,20 +212,6 @@ Widget buildHeader(BuildContext context) {
   );
 }
 
-Widget buildListTile(BuildContext context, String text, Widget icon) {
-  return Container(
-    child: Card(
-      child: ListTile(
-        title: Text(
-          text,
-          style: Theme.of(context).textTheme.bodyText1,
-        ),
-        leading: icon,
-      ),
-    ),
-  );
-}
-
 BoxDecoration styleContainer() {
   return BoxDecoration(
     color: Color.fromARGB(200, 240, 240, 240),
@@ -229,6 +224,19 @@ BoxDecoration styleContainer() {
   );
 }
 
+/*Widget buildListTile(BuildContext context, String text, Widget icon) {
+  return Container(
+    child: Card(
+      child: ListTile(
+        title: Text(
+          text,
+          style: Theme.of(context).textTheme.bodyText1,
+        ),
+        leading: icon,
+      ),
+    ),
+  );
+} */
 
 /*
 CheckboxListTile(
