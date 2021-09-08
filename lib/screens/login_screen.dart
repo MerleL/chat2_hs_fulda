@@ -3,9 +3,9 @@
 
 // https://flutter.de/artikel/flutter-formulare.html
 
-import 'dart:convert';
+//import 'dart:convert';
 
-import 'package:chat2_hs_fulda/messaging/communication.dart';
+//import 'package:chat2_hs_fulda/messaging/communication.dart';
 import 'package:chat2_hs_fulda/screens/uebersicht_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -22,11 +22,14 @@ class _LoginScreenState extends State<LoginScreen> {
     // URL, https://www.geeksforgeeks.org/urls-in-flutter/
     const _url =
         'https://doku.rz.hs-fulda.de/doku.php/docs:benutzeraccount:passwort_aendern';
+    await launch(_url);
+    /* Folgendes besser, funktioniert mit SDK aber nicht:
     if (await canLaunch(_url)) {
       await launch(_url);
     } else {
       throw 'Could not launch $_url';
     }
+    */
   }
 
   @override
@@ -206,19 +209,19 @@ Wenn Sie neu an der Hochschule immatrikuliert sind, ändern Sie bitte zunächst 
             elevation: 0, // entfernt Shadow
           ),
           onPressed: () {
-            Communication.accSearch().then((String value) {
+            //Communication.accSearch().then((String value) {
               //print(value.split(',')[4].split(':')[0]);
                 // ?: bei "," an Index 4 splitten dort an Index 0 bei ":" splitten
               //print(value);
                 //value = komplettes Array
-              var myJson = json.decode(value);
-              print(myJson[1]['fd-Nummer']);
+              //var myJson = json.decode(value);
+              //print(myJson[1]['fd-Nummer']);
               // vom ersten array fd-Nummer ausgeben
-            });
-            if (_formKey.currentState!.validate()) {
+            //});
+            //if (_formKey.currentState!.validate()) {
               Navigator.of(context).push(
                   MaterialPageRoute(builder: (context) => UebersichtScreen()));
-            }
+            //}
             /* wenn Login-Daten richtig, aber Ladefehler
             else {
               showDialog<String>(

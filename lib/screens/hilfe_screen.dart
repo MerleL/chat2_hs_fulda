@@ -1,8 +1,23 @@
 import 'package:chat2_hs_fulda/screens/support_formular_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HilfeScreen extends StatelessWidget {
   const HilfeScreen({Key? key}) : super(key: key);
+
+  void _launchURLBrowser() async {
+    // URL, https://www.geeksforgeeks.org/urls-in-flutter/
+    const _url =
+        'https://www.hs-fulda.de/datenschutz';
+    await launch(_url);
+    /* Folgendes besser, funktioniert mit SDK aber nicht:
+    if (await canLaunch(_url)) {
+      await launch(_url);
+    } else {
+      throw 'Could not launch $_url';
+    }
+    */
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,14 +48,20 @@ class HilfeScreen extends StatelessWidget {
                   ),
                   HilfeScreen(),
                 ),
-                buildListTile(
-                  context,
-                  'Datenschutzerklärung',
-                  Icon(
-                    Icons.lock,
-                    color: Color.fromARGB(255, 78, 90, 92),
+                Card(
+                  child: ListTile(
+                    title: Text(
+                      'Datenschutzerklärung',
+                      style: Theme.of(context).textTheme.bodyText1,
+                    ),
+                    leading: Icon(
+                      Icons.lock,
+                      color: Color.fromARGB(255, 78, 90, 92),
+                    ),
+                    onTap: () {
+                      _launchURLBrowser();
+                    },
                   ),
-                  HilfeScreen(),
                 ),
                 buildListTile(
                   context,
