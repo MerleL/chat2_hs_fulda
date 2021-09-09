@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 
-class DatenUndSpeicherScreen extends StatelessWidget {
+bool valueTemp = false;
+
+class DatenUndSpeicherScreen extends StatefulWidget {
   const DatenUndSpeicherScreen({Key? key}) : super(key: key);
 
+  @override
+  _DatenUndSpeicherScreenState createState() => _DatenUndSpeicherScreenState();
+}
+
+class _DatenUndSpeicherScreenState extends State<DatenUndSpeicherScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,6 +29,7 @@ class DatenUndSpeicherScreen extends StatelessWidget {
                       Icons.folder,
                       color: Color.fromARGB(255, 78, 90, 92),
                     ),
+                      DatenUndSpeicherScreen()
                   ),
                   buildListTile(
                     context,
@@ -30,6 +38,7 @@ class DatenUndSpeicherScreen extends StatelessWidget {
                       Icons.cloud_circle,
                       color: Color.fromARGB(255, 78, 90, 92),
                     ),
+                    DatenUndSpeicherScreen()
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 10.0),
@@ -50,29 +59,20 @@ class DatenUndSpeicherScreen extends StatelessWidget {
                             padding: const EdgeInsets.only(top: 10.0),
                             child: Text('Medien automatisch downloaden'),
                           ),
-                          buildListTile(
-                            context,
-                            'Bei mobiler Datenverbindung',
-                            Icon(
-                              Icons.crop_square,
-                              color: Color.fromARGB(255, 78, 90, 92),
-                            ),
+                          buildCheck(
+                              context,
+                              "Bei mobiler Datenverbindung",
+                              false
                           ),
-                          buildListTile(
-                            context,
-                            'Bei WLAN-Verbindung',
-                            Icon(
-                              Icons.check_box,
-                              color: Color.fromARGB(255, 78, 90, 92),
-                            ),
+                          buildCheck(
+                              context,
+                              "Bei Wlan-Verbindung",
+                              false
                           ),
-                          buildListTile(
-                            context,
-                            'Bei Roaming',
-                            Icon(
-                              Icons.check_box,
-                              color: Color.fromARGB(255, 78, 90, 92),
-                            ),
+                          buildCheck(
+                              context,
+                              "Bei Roaming",
+                              false
                           ),
                         ],
                       ),
@@ -85,6 +85,27 @@ class DatenUndSpeicherScreen extends StatelessWidget {
           ),
         )
       ),
+    );
+  }
+
+  Widget buildCheck(BuildContext context, String text, bool valueLT) {
+    return Container(
+        child: Card(
+          child: CheckboxListTile(
+            title: Text(
+              text,
+              style: Theme.of(context).textTheme.bodyText1,
+            ),
+            controlAffinity: ListTileControlAffinity.leading,
+            value: valueTemp,
+            onChanged: (bool? value) {
+              setState(() {
+                valueTemp = value!;
+              });
+            },
+            activeColor: Color.fromARGB(255, 78, 90, 92),
+          ),
+        )
     );
   }
 }
@@ -107,7 +128,7 @@ Widget buildHeader(BuildContext context) {
   );
 }
 
-Widget buildListTile(BuildContext context, String text, Widget icon) {
+Widget buildListTile(BuildContext context, String text, Widget icon, screen) {
   return Card(
     child: ListTile(
       title: Text(
@@ -115,6 +136,10 @@ Widget buildListTile(BuildContext context, String text, Widget icon) {
         style: Theme.of(context).textTheme.bodyText1,
       ),
       leading: icon,
+      onTap: () {
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (context) => screen));
+      },
     ),
   );
 }

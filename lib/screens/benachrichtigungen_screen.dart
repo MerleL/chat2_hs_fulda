@@ -54,7 +54,7 @@ class _BenachrichtigungenScreenState extends State<BenachrichtigungenScreen> {
                           buildCheck(
                               context,
                               "Einzelchats",
-                              false,
+                              false
                           ),
                           buildCheck(
                               context,
@@ -158,7 +158,7 @@ class _BenachrichtigungenScreenState extends State<BenachrichtigungenScreen> {
                           buildCheck(
                               context,
                               'Rot',
-                              false,
+                              false
                           ),
                         ],
                       ),

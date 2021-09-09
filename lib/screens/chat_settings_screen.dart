@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 
-class ChatSettingsScreen extends StatelessWidget {
+bool valueTemp = false;
+
+class ChatSettingsScreen extends StatefulWidget {
   const ChatSettingsScreen({Key? key}) : super(key: key);
 
-  //bool val = false;
+  @override
+  _ChatSettingsScreenState createState() => _ChatSettingsScreenState();
+}
 
+class _ChatSettingsScreenState extends State<ChatSettingsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,6 +35,7 @@ class ChatSettingsScreen extends StatelessWidget {
                     Icons.wallpaper,
                     color: Color.fromARGB(255, 78, 90, 92),
                   ),
+                  ChatSettingsScreen()
                 ),
                 buildListTile(
                   context,
@@ -38,20 +44,38 @@ class ChatSettingsScreen extends StatelessWidget {
                     Icons.text_fields,
                     color: Color.fromARGB(255, 78, 90, 92),
                   ),
+                    ChatSettingsScreen()
                 ),
-                buildListTile(
+                buildCheck(
                   context,
-                  'Chat speichern',
-                  Icon(
-                    Icons.check_box,
-                    color: Color.fromARGB(255, 78, 90, 92),
-                  ),
+                  "Chat speichern",
+                  true
                 ),
               ],
             ),
           ),
         ),
       ),
+    );
+  }
+  Widget buildCheck(BuildContext context, String text, bool valueLT) {
+    return Container(
+        child: Card(
+          child: CheckboxListTile(
+            title: Text(
+              text,
+              style: Theme.of(context).textTheme.bodyText1,
+            ),
+            controlAffinity: ListTileControlAffinity.leading,
+            value: valueTemp,
+            onChanged: (bool? value) {
+              setState(() {
+                valueTemp = value!;
+              });
+            },
+            activeColor: Color.fromARGB(255, 78, 90, 92),
+          ),
+        )
     );
   }
 }
@@ -74,8 +98,7 @@ Widget buildHeader(BuildContext context) {
   );
 }
 
-//Eventuell Struktur anpassen!
-Widget buildListTile(BuildContext context, String text, Widget icon) {
+Widget buildListTile(BuildContext context, String text, Widget icon, screen) {
   return Card(
     child: ListTile(
       title: Text(
@@ -83,6 +106,10 @@ Widget buildListTile(BuildContext context, String text, Widget icon) {
         style: Theme.of(context).textTheme.bodyText1,
       ),
       leading: icon,
+      onTap: () {
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (context) => screen));
+      },
     ),
   );
 }

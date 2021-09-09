@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 
-class SpracheScreen extends StatelessWidget {
+bool valueTemp = false;
+
+class SpracheScreen extends StatefulWidget {
   const SpracheScreen({Key? key}) : super(key: key);
 
+  @override
+  _SpracheScreenState createState() => _SpracheScreenState();
+}
+
+class _SpracheScreenState extends State<SpracheScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,27 +21,41 @@ class SpracheScreen extends StatelessWidget {
             child: Column(
               children: [
                 buildHeader(context),
-                buildListTile(
-                  context,
-                  'Deutsch',
-                  Icon(
-                    Icons.check_box,
-                    color: Color.fromARGB(255, 78, 90, 92),
-                  ),
+                buildCheck(
+                    context,
+                    "Deutsch",
+                    true
                 ),
-                buildListTile(
-                  context,
-                  'English',
-                  Icon(
-                    Icons.check_box_outline_blank,
-                    color: Color.fromARGB(255, 78, 90, 92),
-                  ),
+                buildCheck(
+                    context,
+                    "English",
+                    false
                 ),
               ],
             ),
           ),
         ),
       ),
+    );
+  }
+  Widget buildCheck(BuildContext context, String text, bool valueLT) {
+    return Container(
+        child: Card(
+          child: CheckboxListTile(
+            title: Text(
+              text,
+              style: Theme.of(context).textTheme.bodyText1,
+            ),
+            controlAffinity: ListTileControlAffinity.leading,
+            value: valueTemp,
+            onChanged: (bool? value) {
+              setState(() {
+                valueTemp = value!;
+              });
+            },
+            activeColor: Color.fromARGB(255, 78, 90, 92),
+          ),
+        )
     );
   }
 }
@@ -53,18 +74,6 @@ Widget buildHeader(BuildContext context) {
           style: Theme.of(context).textTheme.headline2,
         ),
       ),
-    ),
-  );
-}
-
-Widget buildListTile(BuildContext context, String text, Widget icon) {
-  return Card(
-    child: ListTile(
-      title: Text(
-        text,
-        style: Theme.of(context).textTheme.bodyText1,
-      ),
-      leading: icon,
     ),
   );
 }
