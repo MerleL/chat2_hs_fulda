@@ -1,10 +1,6 @@
-// ToDo: Sprachwahl, Cookies, Link funktioniert noch nicht
-// ToDo Datenbank: Formular, Checkbox
-
 // https://flutter.de/artikel/flutter-formulare.html
 
 //import 'dart:convert';
-
 //import 'package:chat2_hs_fulda/messaging/communication.dart';
 import 'package:chat2_hs_fulda/screens/uebersicht_screen.dart';
 import 'package:flutter/material.dart';

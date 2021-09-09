@@ -2,9 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 //import 'package:flutter/services.dart';
 
-// ToDo: Loesung fuer lange Namen/Staden
-// ToDo Datenbank: Name, FD, Bild; Bild/Status änderbar
-
 class ProfilScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

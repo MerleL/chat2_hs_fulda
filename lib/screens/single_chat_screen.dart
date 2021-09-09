@@ -1,8 +1,3 @@
-
-
-// ToDo: default-Text wenn Chat leer, Klammer/Mikro durch Pfeil ersetzen
-// ToDo Datenbank: Nachrichten Senden + Speichern, Chatbild statt Logo
-
 import 'package:flutter/material.dart';
 
 class SingleChatScreen extends StatefulWidget {

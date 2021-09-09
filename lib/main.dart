@@ -1,8 +1,4 @@
 
-
-// ToDo FontFamily
-// ToDo: Automatische Abmeldung nach bstimmter Zeit
-// ToDo: Sprache waehlbar
 import 'package:chat2_hs_fulda/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';

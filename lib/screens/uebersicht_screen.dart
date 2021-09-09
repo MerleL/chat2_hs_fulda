@@ -1,7 +1,3 @@
-// ToDO: Sprachwahl, Suchen (Fachbereich auswählen, Dozent/Student/o.ä.) + hinzufuegen
-// ToDo: DrawerHeader: Loesung fuer lange Namen, Bild aus Profil
-// ToDo Datenbank: Chats auflisten + aufrufen
-
 import 'package:chat2_hs_fulda/screens/profil_screen.dart';
 import 'package:chat2_hs_fulda/screens/settings_screen.dart';
 import 'package:chat2_hs_fulda/screens/single_chat_screen.dart';
